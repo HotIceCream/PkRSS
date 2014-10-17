@@ -166,7 +166,7 @@ public class PkRSS {
 		String response = request.downloader == null ? downloader.execute(request) : request.downloader.execute(request);
 
 		// Parse articles from response and inset into global list
-		List<Article> newArticles = request.parser == null ? parser.parse(response) : request.parser.parse(response);
+		List<Article> newArticles = request.parser == null ? parser.parse(response, request.encoding) : request.parser.parse(response, request.encoding);
 		insert(safeUrl, newArticles);
 
 		// Call the "OnLoaded" code, if available

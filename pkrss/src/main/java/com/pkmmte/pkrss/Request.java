@@ -20,8 +20,9 @@ public final class Request {
 	public final Downloader downloader;
 	public final Parser parser;
 	public final Callback callback;
+    public final String encoding;
 
-	public Request(String url, String search, boolean individual, boolean skipCache, int page, CallbackHandler handler, Downloader downloader, Parser parser, Callback callback) {
+	public Request(String url, String search, boolean individual, boolean skipCache, int page, CallbackHandler handler, Downloader downloader, Parser parser, Callback callback, String encoding) {
 		this.tag = String.valueOf(ID_GENERATOR.incrementAndGet());
 		this.url = url;
 		this.search = search;
@@ -32,6 +33,7 @@ public final class Request {
 		this.downloader = downloader;
 		this.parser = parser;
 		this.callback = callback;
+        this.encoding = encoding;
 	}
 
 	public Request(Builder builder) {
@@ -45,9 +47,10 @@ public final class Request {
 		this.downloader = builder.downloader;
 		this.parser = builder.parser;
 		this.callback = builder.callback;
+        this.encoding = builder.encoding;
 	}
 
-	public static final class Builder {
+    public static final class Builder {
 		private String tag;
 		private String url;
 		private String search;
@@ -58,6 +61,7 @@ public final class Request {
 		private Downloader downloader;
 		private Parser parser;
 		private Callback callback;
+        private String encoding;
 
 		public Builder(String url) {
 			this.tag = null;
@@ -70,6 +74,7 @@ public final class Request {
 			this.downloader = null;
 			this.parser = null;
 			this.callback = null;
+            this.encoding = null;
 		}
 
 		public Builder tag(String tag) {
@@ -121,6 +126,11 @@ public final class Request {
 			this.callback = callback;
 			return this;
 		}
+
+        public Builder encoding(String encoding) {
+            this.encoding = encoding;
+            return this;
+        }
 
 		public Request build() {
 			return new Request(this);

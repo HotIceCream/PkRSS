@@ -52,7 +52,7 @@ public class AtomParser extends Parser {
 	}
 
 	@Override
-	public List<Article> parse(String rssStream) {
+	public List<Article> parse(String rssStream, String encoding) {
 		// Clear previous list and start timing execution time
 		articleList.clear();
 		long time = System.currentTimeMillis();

@@ -54,7 +54,7 @@ public class Rss2Parser extends Parser {
 	}
 
 	@Override
-	public List<Article> parse(String rssStream) {
+	public List<Article> parse(String rssStream, String encoding) {
 		// Clear previous list and start timing execution time
 		articleList.clear();
 		long time = System.currentTimeMillis();
@@ -62,7 +62,7 @@ public class Rss2Parser extends Parser {
 		try {
 			// Get InputStream from String and set it to our XmlPullParser
 			InputStream input = new ByteArrayInputStream(rssStream.getBytes());
-			xmlParser.setInput(input, null);
+			xmlParser.setInput(input, encoding);
 
 			// Reuse Article object and event holder
 			Article article = new Article();

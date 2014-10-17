@@ -22,7 +22,18 @@ public abstract class Parser {
 	 * @param rssStream String response to parse items from.
 	 * @return An {@link Article} {@link List} containing newly parsed items.
 	 */
-	public abstract List<Article> parse(String rssStream);
+    public List<Article> parse(String rssStream) {
+        return parse(rssStream, null);
+    }
+
+    /**
+     * Parses {@link Article} objects out of the passed String response.
+     * @param rssStream String response to parse items from.
+     * @param encoding Encoding for parce xml. May be null.
+     * @return An {@link Article} {@link List} containing newly parsed items.
+     */
+    public abstract List<Article> parse(String rssStream, String encoding);
+
 
 	/**
 	 * Attaches a {@link PkRSS} singleton instance to this Parser for logging purposes.

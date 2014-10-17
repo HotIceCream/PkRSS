@@ -133,6 +133,15 @@ public class RequestCreator {
 		return this;
 	}
 
+    /**
+     * Specify encoding for input stream. This parameter override parameter from xml header.
+     * @param encoding Encoding for parse xml.
+     */
+    public RequestCreator encoding(String encoding) {
+        this.data.encoding(encoding);
+        return this;
+    }
+
 	/**
 	 * Executes request and returns a full list containing all
 	 * articles loaded from this request's URL.
